@@ -1,6 +1,6 @@
-SOURCE   = Name-YEAR
+SOURCE   = ShimouraR-KamijiNL-PenaRFO-CordeiroVL-RomaroC-CeballosCC-RoqueAC-2017
 MDFILE   = $(SOURCE).md
-BIBFILE  = bibliography.bib
+BIBFILE  = $(SOURCE).bib
 TEXFILE  = $(SOURCE).tex
 PDFFILE  = $(SOURCE).pdf
 TEMPLATE = rescience-template.tex
