@@ -10,7 +10,7 @@ TEMPLATE = rescience-template.tex
 	@pandoc --standalone                          \
                 --filter ~/.cabal/bin/pandoc-crossref \
                 --template=$(TEMPLATE)                \
-                --latex-engine=xelatex                \
+                --latex-engine=lualatex                \
                 --biblatex                            \
                 --bibliography=$(BIBFILE)             \
                 -M "crossrefYaml=crossref.yaml"       \
@@ -18,16 +18,16 @@ TEMPLATE = rescience-template.tex
 
 %.pdf: $(TEXFILE) $(BIBFILE) $(TEMPLATE)
 	@echo " [1/4] Processing $(TEXFILE) (pass 1)"
-	@xelatex $(TEXFILE) > make.log
+	@lualatex $(TEXFILE) > make.log
 
 	@echo " [2/4] Processing $(BIBFILE)"
 	@biber $(SOURCE) >> make.log
 
 	@echo " [3/4] Processing $(TEXFILE) (pass 2)"
-	@xelatex $(TEXFILE) >> make.log
+	@lualatex $(TEXFILE) >> make.log
 
 	@echo " [4/4] Processing $(TEXFILE) (pass 3)"
-	@xelatex $(TEXFILE) >> make.log
+	@lualatex $(TEXFILE) >> make.log
 
         # Remove the intermediate tex file because you're
         # not supposed to edit it.
